@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using TicTacToe.Model;
 
 namespace TicTacToe.ViewModel
 {
@@ -13,11 +14,13 @@ namespace TicTacToe.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
+
     class RelayCommand<T> : ICommand
     {
         private readonly Predicate<T> _canExecute;
@@ -30,6 +33,8 @@ namespace TicTacToe.ViewModel
             _canExecute = canExecute;
             _execute = execute;
         }
+
+        public event EventHandler CanExecuteChanged;
 
         public bool CanExecute(object parameter)
         {
@@ -46,12 +51,6 @@ namespace TicTacToe.ViewModel
         public void Execute(object parameter)
         {
             _execute((T)parameter);
-        }
-
-        public event EventHandler CanExecuteChanged
-        {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
         }
 
     }
