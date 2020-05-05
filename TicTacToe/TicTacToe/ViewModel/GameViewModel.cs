@@ -44,6 +44,7 @@ namespace TicTacToe.ViewModel
 
                     // set content to current smallSquare and disable the cell 
                     smallSquare.ContentButton = IsPlayer1Turn ? Cross : Nought;
+                    smallSquare.Color = IsPlayer1Turn ? Brushes.Blue: Brushes.Red;
                     smallSquare.IsEnable = false;
 
 
@@ -68,6 +69,7 @@ namespace TicTacToe.ViewModel
                         BigSquare.SmallSquares.ForEach((p) =>
                         {
                             p.IsEnable = false;
+
                         });
 
 
@@ -142,6 +144,8 @@ namespace TicTacToe.ViewModel
 
     public class SmallSquare: GameBaseViewModel
     {
+        private SolidColorBrush _color;
+        private SolidColorBrush _backgroundColor = Brushes.LightGray;
 
         private string _ContentButton;
         public string ContentButton
@@ -160,6 +164,26 @@ namespace TicTacToe.ViewModel
             set
             {
                 _IsEnable = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public SolidColorBrush Color
+        {
+            get { return _color; }
+            set
+            {
+                _color = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public SolidColorBrush BackgroundColor
+        {
+            get { return _backgroundColor; }
+            set
+            {
+                _backgroundColor = value;
                 OnPropertyChanged();
             }
         }
