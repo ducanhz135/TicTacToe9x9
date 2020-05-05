@@ -72,11 +72,12 @@
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Button Content="{Binding Path = ContentButton}"
+                                <Button Content="{Binding ContentButton}"
                                         IsEnabled="{Binding IsEnable}"
                                         Command="{Binding RelativeSource={RelativeSource FindAncestor, 
-AncestorType={x:Type Window}}, Path=DataContext.TickCommand}"
-                                        CommandParameter="{Binding}"></Button>
+                                        AncestorType={x:Type Window}}, Path=DataContext.TickCommand}"
+                                        CommandParameter="{Binding}"
+                                        Foreground="{Binding Color}"></Button>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
