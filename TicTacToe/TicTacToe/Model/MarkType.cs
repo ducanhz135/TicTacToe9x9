@@ -10,7 +10,7 @@ namespace TicTacToe.Model
     {
 
         /// <summary>
-        /// No Tick.
+        /// No Tick
         /// </summary>
         Free,
         /// <summary>
